@@ -16,10 +16,10 @@ class Display extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Text(
               result,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 24),
+              style: const TextStyle(
+                fontFamily: 'Segment7',
+                fontSize: 48,
+              ),
             ),
           ),
         ),

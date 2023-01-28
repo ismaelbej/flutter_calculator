@@ -14,6 +14,7 @@ class App extends StatelessWidget {
       theme: ThemeData.from(
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.grey,
+          brightness: Brightness.dark,
         ),
       ),
     );

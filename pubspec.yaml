@@ -1,6 +1,7 @@
 name: calculator
-description: A calculator.
-publish_to: 'none
+description: A flutter calculator.
+publish_to: 'none'
+
 version: 1.0.0+1
 
 environment:
@@ -18,3 +19,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+   - family: Segment7
+     fonts:
+       - asset: assets/fonts/Segment7Standard.otf
+         weight: 500
