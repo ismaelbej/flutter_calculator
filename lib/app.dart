@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'presentation/home_page.dart';
+import 'presentation/calculator_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -9,7 +9,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Calculator',
-      home: const HomePage(title: 'Calculator'),
+      home: const CalculatorPage(title: 'Calculator'),
       debugShowCheckedModeBanner: false,
       theme: ThemeData.from(
         colorScheme: ColorScheme.fromSwatch(

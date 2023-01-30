@@ -15,7 +15,7 @@ enum KeypadButtonData {
   k5("5"),
   k6("6"),
   kMinus("-"),
-  k1("0"),
+  k1("1"),
   k2("2"),
   k3("3"),
   kPlus("+"),
@@ -29,8 +29,15 @@ enum KeypadButtonData {
   const KeypadButtonData(this.label);
 }
 
+typedef KeypadButtonPress = void Function(KeypadButtonData value);
+
 class Keypad extends StatelessWidget {
-  const Keypad({super.key});
+  final KeypadButtonPress onPress;
+
+  const Keypad({
+    super.key,
+    required this.onPress,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +49,7 @@ class Keypad extends StatelessWidget {
           .map(
             (buttonData) => KeypadButton(
               label: buttonData.label,
-              action: () {},
+              action: () => onPress(buttonData),
             ),
           )
           .toList(),

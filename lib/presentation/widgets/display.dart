@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 class Display extends StatelessWidget {
   final String result;
+
+  static const textStyle = TextStyle(
+    fontFamily: 'Segment7',
+    fontSize: 48,
+  );
   const Display({super.key, required this.result});
 
   @override
@@ -16,10 +21,7 @@ class Display extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Text(
               result,
-              style: const TextStyle(
-                fontFamily: 'Segment7',
-                fontSize: 48,
-              ),
+              style: textStyle,
             ),
           ),
         ),
