@@ -6,6 +6,7 @@ enum Operation {
   sub,
   prod,
   div,
+  perc,
   equal,
 }
 
@@ -58,7 +59,9 @@ class CalculatorModel extends ChangeNotifier {
   }
 
   void delete() {
-    _setInput(_input.substring(0, _input.length - 1));
+    if (_input.isNotEmpty) {
+      _setInput(_input.substring(0, _input.length - 1));
+    }
   }
 
   void pushOperation(Operation operation) {
@@ -77,6 +80,9 @@ class CalculatorModel extends ChangeNotifier {
           break;
         case Operation.div:
           _memory = _memory! / value;
+          break;
+        case Operation.perc:
+          _memory = _memory! * value / 100.0;
           break;
         case Operation.none:
           _memory = value;

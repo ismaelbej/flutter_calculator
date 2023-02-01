@@ -5,38 +5,32 @@ import 'widgets/display.dart';
 import 'widgets/keypad.dart';
 import 'models/calculator_model.dart';
 
-class CalculatorPage extends StatefulWidget {
+class CalculatorPage extends StatelessWidget {
   const CalculatorPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<CalculatorPage> createState() => _CalculatorPageState();
-}
-
-class _CalculatorPageState extends State<CalculatorPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: ChangeNotifierProvider(
-        create: (context) => CalculatorModel(),
-        child: Consumer<CalculatorModel>(
-          builder: (context, model, child) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Display(result: model.result),
-                Expanded(
-                  child: Keypad(
-                    onPress: (button) => _onPress(context, button),
+      body: SafeArea(
+        child: ChangeNotifierProvider(
+          create: (context) => CalculatorModel(),
+          child: Consumer<CalculatorModel>(
+            builder: (context, model, child) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Display(result: model.result),
+                  Expanded(
+                    child: Keypad(
+                      onPress: (button) => _onPress(context, button),
+                    ),
                   ),
-                ),
-              ],
-            );
-          },
+                ],
+              );
+            },
+          ),
         ),
       ),
     );
@@ -84,6 +78,10 @@ class _CalculatorPageState extends State<CalculatorPage> {
       case KeypadButtonData.kDivide:
         Provider.of<CalculatorModel>(context, listen: false)
             .pushOperation(Operation.div);
+        break;
+      case KeypadButtonData.kPercentage:
+        Provider.of<CalculatorModel>(context, listen: false)
+            .pushOperation(Operation.perc);
         break;
       case KeypadButtonData.kEqual:
         Provider.of<CalculatorModel>(context, listen: false)

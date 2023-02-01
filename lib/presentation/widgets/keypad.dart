@@ -5,7 +5,7 @@ import 'keypad_button.dart';
 enum KeypadButtonData {
   kReset("AC"),
   kDelete("C"),
-  kPerc("%"),
+  kPercentage("%"),
   kDivide("÷"),
   k7("7"),
   k8("8"),
