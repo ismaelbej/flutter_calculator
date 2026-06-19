@@ -13,11 +13,14 @@ class KeypadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: FilledButton(
-        onPressed: action,
-        child: Text(
-          label,
-          style: Theme.of(context).textTheme.titleLarge,
+      child: SizedBox.square(
+        dimension: 48,
+        child: FilledButton(
+          onPressed: action,
+          child: Text(
+            label,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         ),
       ),
     );

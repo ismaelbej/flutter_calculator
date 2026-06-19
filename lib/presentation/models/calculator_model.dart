@@ -25,7 +25,7 @@ class CalculatorModel extends ChangeNotifier {
   double? _memory;
   Operation lastOperator = Operation.none;
 
-  CalculatorModel();
+  CalculatorModel() : _memory = 0.0;
 
   void enterDigit(String digit) {
     _setInput(_input + digit);

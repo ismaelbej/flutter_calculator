@@ -16,20 +16,18 @@ class CalculatorPage extends StatelessWidget {
       body: SafeArea(
         child: ChangeNotifierProvider(
           create: (context) => CalculatorModel(),
-          child: Consumer<CalculatorModel>(
-            builder: (context, model, child) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Display(result: model.result),
-                  Expanded(
-                    child: Keypad(
-                      onPress: (button) => _onPress(context, button),
-                    ),
-                  ),
-                ],
-              );
-            },
+          builder: (context, _) => Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Consumer<CalculatorModel>(
+                builder: (context, model, _) => Display(result: model.result),
+              ),
+              Expanded(
+                child: Keypad(
+                  onPress: (button) => _onPress(context, button),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -86,8 +84,6 @@ class CalculatorPage extends StatelessWidget {
       case KeypadButtonData.kEqual:
         Provider.of<CalculatorModel>(context, listen: false)
             .pushOperation(Operation.equal);
-        break;
-      default:
         break;
     }
   }
