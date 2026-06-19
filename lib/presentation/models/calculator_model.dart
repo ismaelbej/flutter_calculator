@@ -16,16 +16,16 @@ class CalculatorModel extends ChangeNotifier {
     if (_input.isNotEmpty) {
       return _input;
     }
-    if (_memory != null) {
-      return "$_memory";
+    if (_result != null) {
+      return "$_result";
     }
     return "";
   }
 
-  double? _memory;
+  double? _result;
   Operation lastOperator = Operation.none;
 
-  CalculatorModel() : _memory = 0.0;
+  CalculatorModel() : _result = 0.0;
 
   void enterDigit(String digit) {
     _setInput(_input + digit);
@@ -54,7 +54,7 @@ class CalculatorModel extends ChangeNotifier {
 
   void reset() {
     lastOperator = Operation.none;
-    _memory = null;
+    _result = null;
     _setInput("");
   }
 
@@ -70,25 +70,25 @@ class CalculatorModel extends ChangeNotifier {
 
       switch (lastOperator) {
         case Operation.add:
-          _memory = _memory! + value;
+          _result = _result! + value;
           break;
         case Operation.sub:
-          _memory = _memory! - value;
+          _result = _result! - value;
           break;
         case Operation.prod:
-          _memory = _memory! * value;
+          _result = _result! * value;
           break;
         case Operation.div:
-          _memory = _memory! / value;
+          _result = _result! / value;
           break;
         case Operation.perc:
-          _memory = _memory! * value / 100.0;
+          _result = _result! * value / 100.0;
           break;
         case Operation.none:
-          _memory = value;
+          _result = value;
           break;
         case Operation.equal:
-          _memory = value;
+          _result = value;
           break;
       }
 
